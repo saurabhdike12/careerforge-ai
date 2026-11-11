@@ -1,0 +1,26 @@
+﻿# Secrets — never commit
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Database and vector store
+*.db
+*.sqlite3
+careerforge.db
+backend/data/chroma_db/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
