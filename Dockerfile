@@ -12,7 +12,11 @@ RUN apt-get update && apt-get install -y \
 
 # Python dependencies
 COPY requirements.txt .
+
+# Upgrade pip and install build tools globally
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+
+# Install requirements with build isolation disabled so setuptools is accessible
 RUN pip install --no-cache-dir --no-build-isolation -r requirements.txt
 
 # Download spaCy model
