@@ -4,7 +4,10 @@
 // =====================================================================
 
 const { useState, useEffect, useRef, useCallback } = React;
-const API_BASE = "http://localhost:8000";
+// Auto-detect: use Railway URL in production, localhost in development
+const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://localhost:8000"
+  : "https://careerforge-ai-production.up.railway.app";
 
 // ─── API Client ───────────────────────────────────────────────────────────────
 
