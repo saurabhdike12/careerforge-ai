@@ -1,0 +1,50 @@
+# CareerForge AI — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Web Framework
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9
+
+# IBM watsonx.ai SDK
+ibm-watsonx-ai==1.0.10
+ibm-cloud-sdk-core==3.20.3
+
+# LangChain RAG Pipeline
+langchain==0.2.5
+langchain-community==0.2.5
+langchain-ibm==0.1.8
+
+# Vector Store
+chromadb==0.5.3
+
+# Document Parsing (Docling for resume parsing)
+docling==1.16.0
+PyPDF2==3.0.1
+python-docx==1.1.2
+
+# Data Models & Validation
+pydantic==2.7.3
+pydantic-settings==2.3.3
+
+# Database
+sqlalchemy==2.0.30
+aiosqlite==0.20.0
+
+# NLP & Text Processing
+sentence-transformers==3.0.1
+nltk==3.8.1
+spacy==3.7.5
+
+# Utilities
+python-dotenv==1.0.1
+httpx==0.27.0
+aiofiles==23.2.1
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+slowapi==0.1.9
+
+# Dev & Testing
+pytest==8.2.2
+pytest-asyncio==0.23.7
+httpx==0.27.0

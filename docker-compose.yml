@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  backend:
+    build: .
+    container_name: careerforge-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - WATSONX_API_KEY=${WATSONX_API_KEY}
+      - WATSONX_PROJECT_ID=${WATSONX_PROJECT_ID}
+      - WATSONX_URL=${WATSONX_URL:-https://us-south.ml.cloud.ibm.com}
+      - GRANITE_MODEL_ID=${GRANITE_MODEL_ID:-ibm/granite-13b-chat-v2}
+      - DATABASE_URL=sqlite:///./careerforge.db
+      - CHROMA_PERSIST_DIR=/app/data/chroma_db
+    volumes:
+      - ./backend/data:/app/data
+      - ./careerforge.db:/app/careerforge.db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    image: nginx:alpine
+    container_name: careerforge-frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+networks:
+  default:
+    name: careerforge-network
